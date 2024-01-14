@@ -35,9 +35,9 @@ void displayBoard(char board[BOARD_SIZE][BOARD_SIZE]) {
                     printf("\t%s%c%s ", ORANGE_TEXT, cell, RESET_TEXT);
                     break;
                 case 'O':
-				    printf("\t%s%c%s ", GREEN_TEXT, cell, RESET_TEXT);
+		    printf("\t%s%c%s ", GREEN_TEXT, cell, RESET_TEXT);
                     break;
-				case 'W':
+		case 'W':
                     printf("\t%s%c%s ", PURPLE_TEXT, cell, RESET_TEXT);
                     break;
                 case 'X':
@@ -46,7 +46,6 @@ void displayBoard(char board[BOARD_SIZE][BOARD_SIZE]) {
                 case 'M':
                     printf("\t%s%c%s ", DARK_BROWN_TEXT, cell, RESET_TEXT);
                     break;    
-     
                 default:
                     printf("\t%c ", cell); 
             }
@@ -54,7 +53,6 @@ void displayBoard(char board[BOARD_SIZE][BOARD_SIZE]) {
         printf("\n\n");
     }
 }
-
 void initializeBoard(char board[BOARD_SIZE][BOARD_SIZE], int level) {
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     if (level == 1) {
@@ -71,7 +69,7 @@ void initializeBoard(char board[BOARD_SIZE][BOARD_SIZE], int level) {
             {'L', 'L', 'L', '_', 'L', 'L', '_', 'L', 'L', 'L'},
             {'L', 'L', 'L', 'L', 'L', 'L', 'L', 'L', 'L', 'L'}
         };
-
+	    
         // Copy level1 to the main board
         SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
         printf("Pass Through The Lava Cave! And Find The Portal\n");
@@ -105,17 +103,17 @@ void initializeBoard(char board[BOARD_SIZE][BOARD_SIZE], int level) {
         printf("Fight The Creepy Creatures And Pass Through The Portal To Procede\n");
         printf("Don't Take Too Much DAMAGE!");
         SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
-         Beep(600,100);
+        Beep(600,100);
         Beep(2000,100);
         for (int i = 0; i < BOARD_SIZE; i++) {
             for (int j = 0; j < BOARD_SIZE; j++) {
                 board[i][j] = level2[i][j];
             }
         }
-    } else if (level == 3) {
+     } else if (level == 3) {
         // Level 3 Board Configuration
         char level3[BOARD_SIZE][BOARD_SIZE] = {
-       		{'M', 'X', 'X', 'X', 'W', 'L', 'L', 'L', 'L', 'L'},
+       	    {'M', 'X', 'X', 'X', 'W', 'L', 'L', 'L', 'L', 'L'},
             {'M', 'L', 'L', 'L', 'W', '_', 'L', 'L', 'L', 'L'},
             {'M', 'L', 'Q', 'L', 'W', '_', 'X', 'L', 'L', 'L'},
             {'M', 'L', 'L', 'L', 'W', '_', '_', '_', 'L', 'L'},
@@ -126,7 +124,7 @@ void initializeBoard(char board[BOARD_SIZE][BOARD_SIZE], int level) {
             {'L', 'L', 'L', '_', '_', 'X', '_', 'L', 'K', 'L'},
             {'L', 'L', 'L', 'L', 'L', 'L', 'L', 'L', 'L', 'L'}
         };
-		SetConsoleTextAttribute(hConsole, FOREGROUND_BLUE | FOREGROUND_INTENSITY);
+	SetConsoleTextAttribute(hConsole, FOREGROUND_BLUE | FOREGROUND_INTENSITY);
         printf("\tPass Through All The Obstacles and Fight All The Enemies to Save Your Queen\n");
         printf("\t\t\t Don't DIE!!'");
         SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
@@ -142,18 +140,18 @@ void initializeBoard(char board[BOARD_SIZE][BOARD_SIZE], int level) {
 int main() {
 	char playagain;
 	do{
-		system("cls");
-    int currentLevel = 1;
-    int winCount = 0;
-     int kingHealth = MAX_HEALTH;
+	system("cls");
+        int currentLevel = 1;
+        int winCount = 0;
+        int kingHealth = MAX_HEALTH;
         HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-         SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_INTENSITY );
+        SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_INTENSITY );
         printf("\t\t\t\t\t           A KING's DUTY\n");
         printf("\t\t\t\t\t    --Save Your Queen, KING!--\n");
-         SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+        SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
         int sleeptimer = 2;
         sleep(sleeptimer);
-		SetConsoleTextAttribute(hConsole, FOREGROUND_BLUE | FOREGROUND_INTENSITY);
+	SetConsoleTextAttribute(hConsole, FOREGROUND_BLUE | FOREGROUND_INTENSITY);
         printf("\t\t\t\tOnce upon a time, in the magical kingdom of Eldoria,\n");
         sleeptimer = 3;
         sleep(sleeptimer);
@@ -167,9 +165,9 @@ int main() {
         sleep(sleeptimer);
         printf("\t\t   overcome  obstacles,  and  rescue  your  Queen  from  the  clutches  of  evil.\n");
         SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
-         sleeptimer = 4;
+        sleeptimer = 4;
         sleep(sleeptimer);
-          SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_INTENSITY );
+        SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_INTENSITY );
         printf("\t\t\t\t\t Get  Ready  To  Enter The  Dungeon\n");
         
         sleeptimer = 3;
@@ -180,7 +178,7 @@ int main() {
             sleep(sleeptimer);
         }
         SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
-    while (currentLevel <= 3 && kingHealth > 0) {
+        while (currentLevel <= 3 && kingHealth > 0) {
         char board[BOARD_SIZE][BOARD_SIZE];
         printf("\n\n\n\n\n");
         initializeBoard(board, currentLevel);
