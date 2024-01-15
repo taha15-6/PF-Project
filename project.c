@@ -2,7 +2,7 @@
 #include <conio.h>
 #include <unistd.h>
 #include <windows.h>
-#include <stdlib.h>
+
 
 #define BOARD_SIZE 10
 #define MAX_HEALTH 10
@@ -164,12 +164,12 @@ int main() {
         sleep(3);
         for (int i = 3; i >= 1 ; i--) {
             printf("\t\t\t\t\t\t\t %d\n\n", i);
-            Beep(200,200);
+            Beep(400,200);
             sleep(1);
         }
         SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 
-    while (currentLevel <= 3) {
+    while (currentLevel <= 3 && kingHealth > 0) {
         char board[BOARD_SIZE][BOARD_SIZE];
         printf("\n\n\n\n\n");
         initializeBoard(board, currentLevel);
@@ -271,6 +271,12 @@ int main() {
         printf("\t\t\t\tThe kingdom rejoices, and peace is restored.\n");
          SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 
+    }
+    if(kingHealth <= 0){
+        SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_INTENSITY );
+        printf("Alas! The King ran out of health.\n");
+        printf("The evil sorcerer's dark magic prevails.\n");
+        SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
     }
         printf("Do you want to play again? (Y/N): ");
         playagain = getch();
