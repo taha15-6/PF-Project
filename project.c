@@ -3,7 +3,6 @@
 #include <unistd.h>
 #include <windows.h>
 
-
 #define BOARD_SIZE 10
 #define MAX_HEALTH 10
 
@@ -98,6 +97,7 @@ void initializeBoard(char board[BOARD_SIZE][BOARD_SIZE], int level) {
         SetConsoleTextAttribute(hConsole, FOREGROUND_BLUE | FOREGROUND_INTENSITY);
         printf("Fight The Creepy Creatures And Pass Through The Door To Procede\n");
         printf("Don't Take Too Much DAMAGE!");
+        printf("X is Cobweb | W is Zombie Crab | M is Cave Spider");
         SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
          Beep(600,100);
         Beep(2000,100);
