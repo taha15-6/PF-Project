@@ -134,7 +134,6 @@ void initializeBoard(char board[BOARD_SIZE][BOARD_SIZE], int level) {
     }
 }
 int main() {
-	int height = 5;
 	char playagain;
 	do{
 		system("cls");
