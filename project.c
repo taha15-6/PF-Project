@@ -7,7 +7,7 @@
 #define BOARD_SIZE 10
 #define MAX_HEALTH 10
 
-#define BLUE_TEXT "\033[34m"  
+#define BLUE_TEXT "\033[34m" 
 #define LIGHT_BLUE_TEXT "\033[94m"  
 #define ORANGE_TEXT "\033[33m"  
 #define GREEN_TEXT "\033[32m"  
@@ -16,7 +16,7 @@
 #define BROWN_TEXT "\033[0;33m" 
 #define DARK_BROWN_TEXT "\033[0;33;40m" 
 #define LIGHT_PINK_TEXT "\033[95m" 
-#define RESET_TEXT "\033[0m"  
+#define RESET_TEXT "\033[0m" 
 
 
 void displayBoard(char board[BOARD_SIZE][BOARD_SIZE]) {
@@ -33,7 +33,7 @@ void displayBoard(char board[BOARD_SIZE][BOARD_SIZE]) {
                 case 'L':
                     printf("\t%s%c%s ", ORANGE_TEXT, cell, RESET_TEXT);
                     break;
-                case 'O':
+                case '|':
 				    printf("\t%s%c%s ", GREEN_TEXT, cell, RESET_TEXT);
                     break;
 				case 'W':
@@ -57,22 +57,20 @@ void displayBoard(char board[BOARD_SIZE][BOARD_SIZE]) {
 void initializeBoard(char board[BOARD_SIZE][BOARD_SIZE], int level) {
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     if (level == 1) {
-        // Level 1 Board Configuration
         char level1[BOARD_SIZE][BOARD_SIZE] = {
             {'K', '_', 'L', '_', '_', '_', 'L', 'L', 'L', 'L'},
             {'_', 'L', 'L', 'L', 'L', 'L', 'L', 'L', 'L', 'L'},
             {'_', '_', 'L', '_', 'L', '_', '_', 'L', 'L', 'L'},
             {'L', '_', '_', '_', 'L', '_', '_', 'L', '_', 'L'},
-            {'L', '_', 'L', 'L', 'L', 'L', '_', 'L', '_', 'O'},
+            {'L', '_', 'L', 'L', 'L', 'L', '_', 'L', '_', '|'},
             {'L', '_', '_', '_', 'L', '_', '_', 'L', '_', 'L'},
             {'L', '_', '_', '_', 'L', 'L', '_', '_', '_', 'L'},
             {'L', 'L', 'L', '_', '_', '_', 'L', '_', 'L', 'L'},
             {'L', 'L', 'L', '_', 'L', 'L', '_', 'L', 'L', 'L'},
             {'L', 'L', 'L', 'L', 'L', 'L', 'L', 'L', 'L', 'L'}
         };
-
         SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
-        printf("Pass Through The Lava Cave! And Find The Portal\n");
+        printf("Pass Through The Lava Cave! And Find The Door to the next Room.\n");
         printf(" Don't be Scared to take Damage. You are going to get Wounded in your Journey.\n");
         printf("Use The W/A/S/D keys on your keyboard to navigate.");
         SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
@@ -91,14 +89,14 @@ void initializeBoard(char board[BOARD_SIZE][BOARD_SIZE], int level) {
             {'_', '_', '_', 'X', 'X', 'X', 'X', '_', 'M', '_'},
             {'_', 'M', '_', 'M', '_', 'W', 'X', '_', 'X', '-'},
             {'_', 'W', 'W', 'W', 'W', '_', 'M', 'X', '_', 'X'},
-            {'_', '_', 'X', 'X', 'X', 'O', 'X', 'X', '_', 'W'},
+            {'_', '_', 'X', 'X', 'X', '|', 'X', 'X', '_', 'W'},
             {'X', '_', '_', 'X', 'M', '_', 'W', 'X', 'W', '_'},
             {'_', '_', 'W', '_', 'W', 'X', '_', 'X', '_', '_'},
             {'K', '_', '_', 'X', '_', 'X', 'X', 'X', '_', 'W'}
         };
 
         SetConsoleTextAttribute(hConsole, FOREGROUND_BLUE | FOREGROUND_INTENSITY);
-        printf("Fight The Creepy Creatures And Pass Through The Portal To Procede\n");
+        printf("Fight The Creepy Creatures And Pass Through The Door To Procede\n");
         printf("Don't Take Too Much DAMAGE!");
         SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
          Beep(600,100);
@@ -109,11 +107,10 @@ void initializeBoard(char board[BOARD_SIZE][BOARD_SIZE], int level) {
             }
         }
     } else if (level == 3) {
-        // Level 3 Board Configuration
         char level3[BOARD_SIZE][BOARD_SIZE] = {
-       		{'M', 'X', 'X', 'X', 'M', 'L', 'L', 'L', 'L', 'L'},
+       		{'M', 'X', 'X', 'X', 'W', 'L', 'L', 'L', 'L', 'L'},
             {'W', 'L', 'L', 'L', 'W', '_', 'L', 'L', 'L', 'L'},
-            {'M', 'L', 'Q', 'L', 'M', '_', 'X', 'L', 'L', 'L'},
+            {'M', 'L', 'Q', 'L', 'W', '_', 'X', 'L', 'L', 'L'},
             {'W', 'L', 'L', 'L', 'W', '_', '_', '_', 'L', 'L'},
             {'M', 'X', 'X', 'X', 'W', '_', '_', '_', '_', 'L'},
             {'L', 'X', '_', '_', '_', 'X', 'X', 'W', 'M', 'L'},
@@ -123,6 +120,7 @@ void initializeBoard(char board[BOARD_SIZE][BOARD_SIZE], int level) {
             {'L', 'L', 'L', 'L', 'L', 'L', 'L', 'L', 'L', 'L'}
         };
 		SetConsoleTextAttribute(hConsole, FOREGROUND_BLUE | FOREGROUND_INTENSITY);
+		printf("\t THE QUEEN IS RIGHT THERE, HURRY!\n");
         printf("\tPass Through All The Obstacles and Fight All The Enemies to Save Your Queen\n");
         printf("\t\t\t Don't DIE!!'");
         SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
@@ -136,6 +134,7 @@ void initializeBoard(char board[BOARD_SIZE][BOARD_SIZE], int level) {
     }
 }
 int main() {
+	int height = 5;
 	char playagain;
 	do{
 		system("cls");
@@ -143,11 +142,11 @@ int main() {
     int winCount = 0;
      int kingHealth = MAX_HEALTH;
         HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-        SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_INTENSITY );
+         SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_INTENSITY );
         printf("\t\t\t\t\t           A KING's DUTY\n");
         sleep(1);
         printf("\t\t\t\t\t    --Save Your Queen, KING!--\n");
-        SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+         SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
         sleep(2);
 		SetConsoleTextAttribute(hConsole, FOREGROUND_BLUE | FOREGROUND_INTENSITY);
         printf("\t\t\t\tOnce upon a time, in the magical kingdom of Eldoria,\n");
@@ -155,23 +154,23 @@ int main() {
         printf("\t\t\t   a nefarious  sorcerer  kidnapped  your  beloved  Queen  and-\n");
         sleep(3);
         printf("\t\t\tlocked her away in a mysterious dungeon guarded by deadly obstacles.\n");
-      	sleep(3);
+        sleep(3);
         printf("\t\t     Your  quest, noble King, is  to  navigate through the treacherous  lands,\n");
-     	sleep(3);
+        sleep(3);
         printf("\t\t   overcome  obstacles,  and  rescue  your  Queen  from  the  clutches  of  evil.\n");
         SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
-    	sleep(3);
+        sleep(3);
           SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_INTENSITY );
         printf("\t\t\t\t\t Get  Ready  To  Enter The  Dungeon\n");
         sleep(3);
-
         for (int i = 3; i >= 1 ; i--) {
             printf("\t\t\t\t\t\t\t %d\n\n", i);
-             Beep(200,200);
-             sleep(1);
+            Beep(200,200);
+            sleep(1);
         }
         SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
-    while (currentLevel <= 3 && kingHealth > 0) {
+
+    while (currentLevel <= 3) {
         char board[BOARD_SIZE][BOARD_SIZE];
         printf("\n\n\n\n\n");
         initializeBoard(board, currentLevel);
@@ -180,8 +179,6 @@ int main() {
         displayBoard(board);
 
         int kingRow, kingCol;
-
-        // Find the initial position of the king
         for (int i = 0; i < BOARD_SIZE; i++) {
             for (int j = 0; j < BOARD_SIZE; j++) {
                 if (board[i][j] == 'K') {
@@ -197,7 +194,7 @@ int main() {
         while (!win && !gameover) {
             char move;
             printf("Enter Action for King (w/a/s/d): ");
-            move = getch(); 
+            move = getch();
 
             int prevKingRow = kingRow;
             int prevKingCol = kingCol;
@@ -205,22 +202,22 @@ int main() {
               switch (move) {
                 case 'd':
                     kingCol = (kingCol < BOARD_SIZE - 1) ? kingCol + 1 : kingCol;
-                Beep(400,100);  
+                Beep(400,100); 
                 Beep(1000,50);
 	                    break;
                 case 'a':
                     kingCol = (kingCol > 0) ? kingCol - 1 : kingCol;
-                    Beep(400,100);  
+                    Beep(400,100);
                     Beep(1000,50);
                     break;
                 case 'w':
                     kingRow = (kingRow > 0) ? kingRow - 1 : kingRow;
-                    Beep(400,100);  
+                    Beep(400,100); 
                     Beep(1000,50);
                     break;
                 case 's':
                     kingRow = (kingRow < BOARD_SIZE - 1) ? kingRow + 1 : kingRow;
-                    Beep(400,100);
+                    Beep(400,100); 
                     Beep(1000,50);
                     break;
                 default:
@@ -228,6 +225,8 @@ int main() {
                     Beep(100,50);
                     continue;
             }
+
+
             char newCell = board[kingRow][kingCol];
 
             if (newCell == 'X' || newCell == 'L' || newCell == 'M' || newCell == 'W') {
@@ -238,11 +237,13 @@ int main() {
 
                 if (kingHealth <= 0) {
                     gameover = 1;
+                    SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_INTENSITY );
                     printf("Alas! The King ran out of health.\n");
                     printf("The evil sorcerer's dark magic prevails.\n");
+                     SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
                     break;
                 }
-            } else if (newCell == 'Q' || newCell == 'O' ) {
+            } else if (newCell == 'Q' || newCell == '|' ) {
                 win = 1;
             }
 
@@ -261,18 +262,21 @@ int main() {
             printf("Game over\n");
         }
 
-        // Move to the next level
         currentLevel++;
 		system("cls");
     }
 
     if (winCount == 3) {
+    	SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
         printf("\t\t\tCongratulations! You have successfully cleared all three levels!\n");
         printf("\t\t\t\tThe kingdom rejoices, and peace is restored.\n");
+         SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+
     }
         printf("Do you want to play again? (Y/N): ");
         playagain = getch();
  }while(playagain == 'y' || playagain == 'Y');
 
     return 0;
+	
 }
